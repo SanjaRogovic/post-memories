@@ -11,7 +11,7 @@ const PostProvider = ({ children }) => {
   // Fetch posts on component mount
   const fetchPosts = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/post");
+      const response = await axios.get("https://post-memories.onrender.com/api/post");
       setPosts(response.data);
       setLoading(false);
     } catch (error) {
@@ -23,7 +23,7 @@ const PostProvider = ({ children }) => {
   const createPost = async (newPost) => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/post",
+        "https://post-memories.onrender.com/api/post",
         newPost
       );
       setPosts([...posts, response.data]);
@@ -35,7 +35,7 @@ const PostProvider = ({ children }) => {
   const updatePost = async (id, updatedPost) => {
     try {
       const response = await axios.put(
-        `http://localhost:3000/api/post/${id}`,
+        `https://post-memories.onrender.com/api/post/${id}`,
         updatedPost
       );
 
@@ -48,7 +48,7 @@ const PostProvider = ({ children }) => {
   const likePost = async (id, likedPost) => {
     try {
       const response = await axios.put(
-        `http://localhost:3000/api/post/like/${id}`,
+        `https://post-memories.onrender.com/api/post/like/${id}`,
         likedPost
       );
 
@@ -60,7 +60,7 @@ const PostProvider = ({ children }) => {
 
   const deletePost = async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/api/post/${id}`);
+      await axios.delete(`https://post-memories.onrender.com/api/post/${id}`);
 
       setPosts(posts.filter((post) => post._id !== id)); //keep all the posts except the one where id matches the payload id
     } catch (error) {
